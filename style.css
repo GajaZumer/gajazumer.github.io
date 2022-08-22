@@ -31,7 +31,7 @@ html{
 .domov-header{
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(33, 51, 77, 0.8),rgba(33,51,77,0.8)),url(slike/holo2.JPG);
+    background-image: linear-gradient(rgba(33, 51, 77, 0.8),rgba(33,51,77,0.8)),url("slike/holo2.JPG");
     background-position: center;
     background-size: cover;
     position: relative;
