@@ -1,0 +1,351 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaja Žumer</title>
+    <link rel="stylesheet" href="../delavnica.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="arrow-btn">
+        <a href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
+    </div>
+
+
+    <section class="domov-header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../../index.html">O MENI</a></li>
+                    <li><a href="../../gradivo.html">GRADIVO</a></li>
+                </ul>
+            </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section>
+
+
+    <section class="delavnica">
+
+        <h1>Navodila za izdelavo aplikacije Klub Gaja</h1>
+        <p>V tem projektu boste izdelali aplikacijo za obogateno resničnost, kjer igralec s klikom na enega izmed treh gumbov (<b>Račke</b>, <b>Makarena</b>, <b>Twist</b>)
+            izbere glasbo in vrsto plesa. Lik, v našem primeru bo to humanoidni robot z imenom Kyle, mora ob kliku nemudoma začeti plesati izbrani ples.
+            S klikom na gumb <b>Stop</b> glasbo ugasnemo in tudi robot preneha plesati. Aplikacija sodi na področje obogatene resničnosti, ker bosta 3D modela robota in plesišča vezana na slikovni marker. 
+            Pri implementaciji obogatene resničnosti bomo uporabili programsko orodje Vuforia.
+        </p><br><br>
+
+        <video width="640" height="480" controls autoplay loop muted>
+            <source src="../KlubGaja/Slike/plesi_final.mp4" type="video/mp4">
+        </video><br><br> 
+
+        <p>Datoteke, ki ti bodo pomagale pri izdelavi aplikacije, lahko preneseš s klikom na spodnji gumb.</p><br>
+        <div style="text-align: center;">
+            <a href="../KlubGaja/KlubGaja/Gradiva.zip" download>
+                    <img src="../../slike/download-icon.png" style="width:5%">
+            </a></div><br>
+
+        <h2>Postavitev scene</h2>
+
+        <p>Najprej ustvari nov Unity projekt.<br>
+            Prenesi gradivo s pripravljenimi datotekami in uvozi datoteko formata <b>.unitypackage</b> (<b>Assets > Import Package > Custom Package</b>).</p><br><br>
+                <img src="Slike/pripravaScene1.PNG" style="width:40%"><br><br>
+
+        <p>Igra je sestavljena iz ene scene, v kateri se v osnovi nahajajo igralni objekti kot je prikazano na spodnji sliki:<br>
+            - <b>Plesisce</b>,<br>
+            - <b>Robot</b>.<br></p>
+        <p>Robot naj bo otrok objekta <b>Plesisce</b>. Prav tako na obeh omenjenih objektih izklopi fiziko metanja in prikazovanja senc, saj za trenutni projekt sence niso pomembne in bi z njihovo implementacijo zgolj obremenjevali računalnik.
+            Spremenljivki za vklop in izklop omenjenih funkcionalnosti (<b>Cast Shadows</b>, <b>Receive Shadows</b>) najdeš v oknu <b>Inspector</b> znotraj komponente <b>Mesh Renderer</b>.</p><br><br>
+           
+        <div class="row">
+            <div class="column">
+                <img src="Slike/pripravaScene2.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/pripravaScene3.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+        <p>3D modela plesišča ni v mapi s predpripravljenimi gradivi in ga boš moral ustvariti sam.
+           Plesišču dodaj tudi komponento <b>Material</b>, ki ga ustvariš sam. Naj se material nahaja v mapi <b>Assets > Materiali</b>.
+        Kreiranje utripajočega kockastega vzorca (kot v uvodnem videu) je razloženo v zadnjem poglavju - Dodatne vsebine.</p><br><br>
+        <img src="Slike/pripravaScene4.PNG" style="width:70%"><br><br>
+        <h2>Implementacija animacij</h2>
+        <p>Če želimo, da naš robot miga v ritmih glasbe, moramo implementirati animacije. Za humanoidne 3D modele (to so 3D modeli, ki po obliki in načinu premikanja spominjajo na človeka) spletna platforma Mixamo nudi širok izbor animacij, katerih se bomo poslužili tudi mi.</p>
+        <p>Vpiši se v platformo <a href="https://www.mixamo.com" target="_blank">Mixamo</a> in s klikom na gumb <b>UPLOAD CHARACTER</b> v vnosno polje vstavi 3D model <b>Robot Kyle</b> (najdeš ga v mapi <b>Assets > 3DModeli > Robot Kyle > Model > Robot Kyle.fbx</b>).</p><br><br>
+        <img src="Slike/Animacija3.PNG" style="width:90%"><br><br>
+        <p>Večina animacij, ki jih boš uporabil v projektu, se že nahajajo v mapi <b>Assets > Animacije</b>. Manjka pa animacija plesa makarena. Poišči jo, izberi in jo prenesi s klikom na gumb <b>DOWNLOAD</b> ter jo shrani v mapo k ostalim animacijam.</p><br><br>
+        <img src="Slike/Animacija4.PNG" style="width:90%"><br><br>
+
+        <p>V mapi <b>Assets > Animacije</b> ustvari <b>Animator Controller</b> (<b>Create > Animator Controller</b>), ki bo skrbel za prehajanje med animacijami; poimenumj ga <b>Plesi</b>. Ob zagonu aplikacije in ob kliku na gumb <b>Stop</b> se mora predvajati animacija <b>Idle</b>, ob kliku na gumb s plesom pa se mora nemudoma začeti predvajati ustrezna animacija za ples.</p><br>
+        <p>Oblika animatorja je naslednja:</p><br><br>
+        <img src="Slike/AnimacijeDiagram.png" style="width:70%"><br><br>
+
+        <p>Prehode med animacijami bomo nadzorovali s štirimi parametri tipa <b>Trigger</b> (sprožilec): <b>zacni_idle</b>, <b>zacni_makarena</b>, <b>zacni_twist</b>, <b>zacni_racke</b>.
+            S klikom na gumb <b>+</b> v zavihku <b>Parameters</b> ustvari parametre in jih ustrezno veži na prehode med aplikacijami.
+            To narediš tako, da klikneš na puščico med dvema animacijama in v oknu <b>Inspector</b> v zavihku <b>Conditions</b> klikneš na ikono <b>+</b> ter izbereš parameter, ki bo aktiviral prehod iz ene animacije v drugo.<br>
+            Primer: robot pleše twist; uporabnik pritisne gumb <b>Stop</b>. Pri tem se bo moral sprožiti parameter <b>zacni_idle</b>, ki bo aktiviral predvajanje animacije <b>Idle</b>.<br>
+            Pri vsakem prehodu med animacijami odkljukaj <b>Has Exit Time</b>, saj želimo, da aplikacija med animacijami prekljaplja v trenutku, ko pritisnemo na gumb.</p><br>
+        
+        <img src="Slike/Animacija5.PNG" style="width:100%"><br><br>
+        <p>V oknu <b>Inspector</b> za vsako animacijo obkljukaj <b>Loop Time</b>, saj želimo, da jo robot ponovi več kot enkrat, če sami ne preklopimo med plesi in tako prekinemo animacijo.</p><br><br>
+        <img src="Slike/Animacija6.PNG" style="width:60%"><br><br>
+
+        <p><b>Animator Controller Plesi</b> dodaj kot komponento objektu <b>Robot Kyle</b> v sceni.</p><br>
+        
+
+        <h2>Implementacija uporabniškega vmesnika</h2>
+            <p>Uporabniški vmesnik je sestavljen iz štirih gumbov: trije za izbiro plesa in en gumb <b>Stop</b>, ki skrbi za to, da robot neha plesati in glasba neha igrati. Če želimo v sceno postaviti gumb, moramo najprej kreirati <b>Platno</b> (ang. <em>canvas</em>). Tega najdemo v zavihku <b>UI > Canvas</b>. Preimenuj ga v <b>Platno</b>. 
+                V komponenti <b>Canvas</b> spremeni <b>Render Mode</b> v <b>Screen Space - Overlay</b> in v komponenti <b>Canvas Scaler</b> podaj resolucijo naprave, na kateri boš poganjal aplikacijo (npr. Samsung Galagy S7 ima resolucijo 1440 x 2560).</p><br>
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/UI1.PNG" style="width:70%">
+                </div>
+                <div class="column">
+                    <img src="Slike/Platno1.PNG" style="width:80%">
+                </div>
+            </div> <br><br>
+            
+            <p>Nato usvtarimo štiri gumbe, ki naj bodo otroci objekta <b>Platno</b>. Najdemo jih v zavihku <b>UI > Button</b>. Poimenuj jih <b>Makarena</b>, <b>Twist</b>, <b>Racke</b> in <b>Stop</b>. Prav tako jim dodaj napise (objekt <b>Text</b>, ki je otrok posameznega gumba), po želji spremeni barvo, pisavo in spremeni pozicijo ter velikost na platnu.</p><br><br>
+            <img src="Slike/Gumbi1.PNG" style="width:80%"><br><br>
+        <h2>Implementacija zvoka</h2>
+        <p>Da bo scena bolj pregledna, bomo vanjo dodali prazen igralni objekt (<b>Create Empty</b>) in ga poimenovali <b>Upravitelj zvoka</b>. Ta naj ima tri otroke, pri čemer bo vsak namenjen predvajanju ene skladbe. Poimenuj jih <b>Makarena</b>, <b>Twist</b> in <b>Racke</b>.
+            Če želimo, da je objekt sposoben predvajati zvočne datoteke, mu moramo dodati komponento <b>Audio Source</b> in nanjo vezati pravilno skladbo. Zvočne datoteke se nahajajo v mapi <b>Assets > Glasba</b>.<br>
+        Obkljukaj tudi spremenljivko <b>Loop</b>, saj želimo, da se skladba ponovi, ko pride do konca, in odkljukaj <b>Play On Awake</b>, saj želimo, da ob zagonu aplikacije ne igra nobena skladba.</p><br><br>
+            <img src="Slike/Zvok1.PNG" style="width:80%"><br>
+
+        <h2>Implementacija logike</h2>
+
+        <p>Po navadi za logiko igre skrbijo skripte, v našem primeru (ker projekt ni tako zahteven) pa bo zadostovala uporaba že implementirane funkcionalnosti gumbov - funkcija <b>On Click()</b>. Najdete jo v oknu <b>Inspector</b> v komponenti <b>Button</b>.
+         S klikom na gumb <b>+</b> lahko dodajate akcije, ki naj se izvedejo ob kliku na gumb. V našem primeru so to:<br>
+        - začni predvajati ustrezno animacijo,<br>
+        - ustavi vse ostale animacije,<br>
+        - začni predvajati ustrezno skladbo,<br>
+        - prenehaj predvajati vse ostale skladbe.</p><br>
+
+        <p>Ob kliku na gumb <b>+</b> se zgenerira okno, v katerega moramo prenesti igralni objekt iz scene, na katerega želimo vplivati s prej naštetimi akcijami.
+            V primeru animacij je to <b>Robot Kyle</b>, saj vsebuje komponento <b>Animator</b>, ki je zadolžena za predvajanje animacij. V primeru predvajanja glasbe
+            pa so to otroci objekta <b>Upravitelj zvoka</b>, saj vsebujejo komponento <b>Audio Source</b>, ki je zadolžena za predvajanje skladbe.<br>
+            V spustnem okencu <b>No Function</b> izberemo najprej komponento, na katero želimo vplivati (<b>Animator</b> oziroma <b>Audio Source</b>) ter nato funkcijo, ki jo želimo uporabiti na izbrani komponenti:<br><br>
+            - <b>SetTrigger(string)</b>: aktiviraj parameter trigger, ki bo nato sprožil animacijo,<br>
+            - <b>ResetTrigger(string)</b>: deaktiviraj parameter trigger, ki bo nato deaktiviral animacijo,<br>
+            <br>
+            - <b>Play()</b>: vir zvoka bo pričel igrati skladbo,<br>
+            - <b>Stop()</b>: vir zvoka bo prenehal igrati skladbo.<br><br>
+
+            Ustrezno dodaj vse potrebne funkcije na komponento <b>On Click ()</b> vseh gumbov v sceni.<br><br>
+            <img src="Slike/Logika3.PNG" style="width:50%"><br>
+        </p><br>
+
+        <p>Poženi aplikacijo s klikom na gumb <b>Play</b> in stestiraj njeno delovanje.</p><br><br>
+
+        <h2>Implementacija obogatene resničnosti</h2>
+
+        <p>Naslednji korak je implementirati obogateno resničnost, tako da bo aplikacija prepoznala slikovni marker in nanj postavila našo sceno s plesiščem in robotom. Pri tem bomo uporabili
+            algoritme računalniškega vida, ki so del programskega orodja <b>Vuforia</b>.</p><br><br>
+        <p>Prijavi se v <a href="https://developer.vuforia.com/" target="_blank"><b>Vuforia Developer Portal</b></a> in najprej pod zavihkom <b>License Manager</b> s klikom na gumb <b>Get Basic</b> ustvari svojo licenco, ki jo boš moral vnesti v vsak svoj projekt, ki bo uporabljal Vuforio.</p><br><br>
+        <p>Če si licenco že ustvaril in si tudi že zgeneriral podatkovno bazo s slikovnim markerjem pri enem izmed prejšnjih projektov, preskoči naslednjih nekaj korakov.</p><br><br>
+        <img src="Slike/Vuforia5.PNG" style="width:50%"><br><br>
+
+        <p>Licenco poimenuj in svojo izbiro potrdi s klikom na gumb <b>Confirm</b>.</p><br><br>
+
+        <img src="Slike/Vuforia6.PNG" style="width:50%"><br><br>
+
+        <p>Nato pod zavihkom <b>Target Manager</b> ustvari novo podatkovno bazo s klikom na <b>Add Database</b>. V tej bazi se bodo nahajali vsi naučeni slikovni markerji oziroma tarče.</p><br><br>
+
+        <img src="Slike/Vuforia7.PNG" style="width:50%"><br><br>
+
+        <p>Podatkovno bazo poimenuj in potrdi svojo izbiro s klikom na gumb <b>Create</b>.</p><br><br>
+
+        <img src="Slike/Vuforia8.PNG" style="width:30%"><br><br>
+
+        <p>V naslednjih korakih bomo Vuforio naučili kako izgleda naša slikovna tarča. Slika tarče se nahaja v datoteki z gradivi (<b>2d_marker.jpg</b>). Marker uvozi v Vuforia Developer Portal s klikom na gumb <b>Add Target</b>.<br>
+        Ker gre v našem primeru za prepoznavo 2D slikovnega markerja, označi tip markerja kot <b>Image</b>, poišči mesto datoteke s sliko markerja, vnesi njegovo širino v metrih in po želji spremeni ime.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia9.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia10.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+        
+        <p>Po nekaj minutah ( &#60 5min) je slikovni marker sprocesiran. Če kliknemo na ime markerja, se nam odpre okno z njegovimi informacijami. S klikom na gumb <b>Show Features</b> lahko vidimo
+        točke, ki jih je Vuforia prepoznala za zanimive oziroma za ključne karakteristike slike, ki jih bo iskala v sliki iz kamere med poganjanjem aplikacije. Opazimo lahko, da se karakteristične točke
+    nahajajo na ostrih robovih in na prehodu med dvema kontrastnima barvama.<br>
+Ker je karakterističnih točk veliko, si je slikovni marker prislužil oceno 5 zvezdic.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia11.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia12.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+
+        <p>Sedaj imamo vse potrebno, da implementiramo Vuforio v naš Unity projekt. Celoten paket programov in funkcij, ki jih ponuja Vuforia, naložimo v obliki Unity paketa (<b>add-vuforia-package-10-9-3.unitypackage</b>), ki je shranjen v datoteki z gradivi.
+            V Unity ga naložimo prek <b>Assets > Import Package > Custom Package</b> in izbiro potrdimo s klikom na gumb <b>Import</b> in nato <b>Update</b>.<br><br>
+        </p>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia14.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia15.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+
+        <p>V sceno postavi objekt ARCamera (<b>Vuforia Engine > ARCamera</b>), ki ima enako vlogo kot <b>Main Camera</b> z dodanimi komponentami za prepoznavo slike. Objekta <b>Main Camera</b> zato ne potrebujemo več in jo lahko
+        izbrišemo iz scene.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia16.PNG" style="width:70%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia17.PNG" style="width:50%">
+            </div>
+        </div> <br><br>
+
+        <p>V objektu <b>ARCamera</b> kliknemo na gumb <b>Open Vuforia Engine configuration</b> v komponenti <b>Vuforia Behaviour</b> in v vnosno polje <b>App License Key</b> skopiramo licenco, ki smo jo predhodno ustvarili na Vuforia Developer Portalu.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia13.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/vuforia18.PNG" style="width:70%">
+            </div>
+        </div> <br><br>
+
+        <p>Naslednji korak je v sceno implementirati slikovni marker, na katerega bosta vezana objekt <b>Plesisce</b> in <b>Robot Kyle</b>. Slikovni marker (<b>Image Target</b>) se nahaja v meniju <b>Vuforia Engine > Image Target</b>.
+        Za pravilno delovanje potrebuje informacijo o sliki, ki jo mora iskati in ji slediti, zato moramo njegovi komponenti <b>Image Target Behaviour</b> dodati podatkovno bazo, ki smo jo predhodno ustvarili
+    v Vuforia Developer Portalu. Iz portala jo na računalnik prenesemo s klikom na gumb <b>Download Database</b>; preden jo uvozimo v objekt <b>Image Target</b> jo je potrebno prenesti iz mape v računalniku v Unity projekt (<b>Assets > Import Package > Custom Package</b>).</p><br><br>
+
+    <div class="row">
+        <div class="column">
+            <img src="Slike/Vuforia19.PNG" style="width:70%">
+        </div>
+        <div class="column">
+            <img src="Slike/Vuforia20.PNG" style="width:100%">
+        </div>
+    </div> <br><br>
+
+    <img src="Slike/Vuforia21.PNG" style="width:50%"><br><br>
+
+    <p>Spremenimo še velikost objekta <b>Plesisce</b>, da bo sorazmerne velikosti z objektom <b>Image target</b> in postavimo objekt <b>Plesisce</b> pod objekt <b>Image target</b>, tako da bo njegov otrok.</p><br><br>
+
+    <img src="Slike/vuforia22.PNG" style="width:80%"><br><br>
+
+    <p>V zadnjem koraku razvoja aplikacije moramo aplikacjio zgraditi in jo naložiti na Android napravo, kjer jo bomo tudi stestirali. V meniju <b>File > Build Settings</b> klikni na gumb <b>Add Open Scenes</b>.
+        En Unity projekt ima lahko namreč več scen, ni pa nujno, da so vse namenjene končni aplikaciji (nekatere se lahko uporabljajo samo za prototipiranje).<br>
+    Ker bomo aplikacijo poganjali na Android telefonu, moramo spremeniti platformo. Izberi platformo <b>Android</b> in svojo izbiro potrdi s klikom na gumb <b>Switch Platform</b>. V meniju <b>Player Settings</b> (levo spodaj) v zavihku <b>Player > Other Settings > Identification</b>
+    spremeni <b>Minimum API Level</b> na <b>Android 8.0 'Oreo' (API level 26).</b><br><br>
+     Nato klikni na gumb <b>Build</b> in izberi lokacijo, kamor naj se shrani končna aplikacija.</p><br><br>
+
+    <div class="row">
+        <div class="column">
+            <img src="Slike/Build4.PNG" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="Slike/Build3.PNG" style="width:100%">
+        </div>
+    </div> <br><br>
+
+
+        <h2>Dodatne vsebine</h2>
+
+        <p>V tem poglavju bomo spoznali osnove senčilnika.<br>Senčilnik je skripta, ki matematično in z uporabo algoritmov določi barvo posameznega piksla glede na svetlobne pogoje in vhode senčilnika, ki so del komponente <b>Material</b>.
+        Po meri narejeni senčilniki se uporabljajo za upodabljanje tekočin, listja, nočnega gledanja, toplotnega gledanja itd.
+        Senčilnik narejen po meri za trenutne potrebe aplikacije se v prvi vrsti od standardnega senčilnika razlikuje v simultani uporabi dveh albedo tekstur (rumena, rožnata) in vpeljavi časovne komponente (izmenjevanje tekstur na šahovnici skozi čas).<br>
+        Pisanja senčilnikov se lahko lotiš znotraj skripte z uporabo C# ali pa uporabiš vizualno programiranje (<b>Shader Graph</b>), ki temelji na povezovanju blokov v diagram.<br>
+        Najprej je v meniju <b>Window > Package Manager</b> potrebno naložiti paket <b>Universal RP</b>.</p><br><br>
+        
+        <img src="Slike/dodatnaVsebina0.PNG" style="width:40%"><br><br>
+            <p>Sedaj moramo ustvariti <b>URP Asset</b> in ga povezati z grafičnim cevovodom. V mapi <b>Assets</b> z desnim klikom miške izberi <b>Create > Rendering > Universal Render Pipeline > Pipeline Asset (Forward Renderer)</b>.</p>
+            <p>Trenutno imamo v projektu dva grafična cevovoda - vgrajenega (<b>Built-in Render Pipeline</b>) in univerzalnega (<b>Universal Render Pipeline</b>). Med senčilniki preklapljamo v meniju <b>Edit > Project Settings > Graphics</b>. Na vrhu menija <b>Graphics</b> v polje <b>Scriptable Render Pipeline Settings</b> s klikom na ikono s krogcem vnesi <b>UniversalRenderPipelineAsset</b>.</p>
+        <p>Ker trenutni materiali in teksture niso kompatibilni z novim grafičnim cevovodom, se obarvajo rožnato. To lahko popravimo s klikom na <b>Edit > Render Pipeline > Universal Render Pipeline > Upgrade Project Materials to UniversalRP Materials</b> in svojo izbiro potrdimo s klikom na gumb Proceed.</p>
+            <p>Nov prazen senčilnik (<b>Blank Shader Graph</b>) ustvari v mapi <b>Assets > Materiali</b> z desnim klikom ter z izbiro <b>Create > Shader > Blank Shader Graph</b>. Preimenuj ga v <b>Sahovnica</b>.</p><br><br>
+        <img src="Slike/dodatnaVsebina2.PNG" style="width:50%"><br><br>
+        <p>Z dvakratnik klikom na senčilnik <b>Sahovnica</b> se odpre novo okno za vizualno programiranje senčilnikov. Poznamo več vrst senčilnikov, ki pridejo v poštev v različnih fazah upodabljanja scene.
+        Edina senčilnika, ki sta nujno potrebna za prikazovanje slike, sta senčilnik ogljišč in senčilnik fragmentov (oziroma pikslov).<br>
+        Senčilnik oglišč je računalniški program, ki je namenjen procesiranju oglišč 3D modela, ki oglišča pripravi za nadaljne faze v grafičnem cevovodu.
+
+        Senčilnik fragmentov pa je računalniški program, ki za vsak piksel na zaslonu izračuna njegovo barvo oziroma barvo piksla na zaslonu.</p>
+
+        <p>V našem primeru bomo senčilnik oglišč pustili pri miru, spremenili pa bomo senčilnik fragmentov, ki je sestavljen iz naslednjih vozlišč:<br>
+
+        - <b>Branch</b>: je logično vozlišče s tremi vhodi in enim izhodom, ki glede na pravilnost trditve na vhodu <b>Predicate</b>, vrne trditev vezano na vhod <b>True</b> oziroma trditev vezano na vhod <b>False</b>.<br>
+        <img src="Slike/Branch.PNG" style="width:10%"><br><br>
+        - <b>Checkerboard</b>: je proceduralno vozlišče s štitimi vhodi in enim izhodom, ki generira vzorec šahovnice, kjer vhoda <b>Color A</b> in <b>Color B</b> določata izmenjujoči si barvi, vhod <b>Frequency</b> pa velikost vzorca.<br>
+        <img src="Slike/Checkerboard.PNG" style="width:10%"><br><br>
+        - <b>Color</b>: je vozlišče, ki nima vhodov in samo en izhod ter se ga zato uporablja kot vhod v druga vozlišča.<br>
+        <img src="Slike/Color.PNG" style="width:10%"><br><br>
+        - <b>Comparisson</b>: je logično vozlišče z dvema vhodoma in enim izhodom ter logično operacijo. Njegova naloga je primerjati vhoda <b>A</b> in <b>B</b> glede na izbrano logično operacijo in vrniti logično spremenljivko tipa boolean. Po navadi se to vozlišče uporablja v kombinaciji z vozliščem <b>Branch</b>.<br>
+        <img src="Slike/Comparison.PNG" style="width:10%"><br><br>
+        - <b>Multiply</b>:je matematično vozlišče z dvema vhodoma in izhodom, ki vrne zmnožek vhoda <b>A</b> z vhodom <b>B</b>, ki sta vektorske oblike.<br>
+        <img src="Slike/Multiply.PNG" style="width:10%"><br><br>
+        - <b>Sine</b> (sinus): je matematično vozlišče z enim vhodom in enim izhodom, ki vrne sinus vrednosti na vhodu <b>In</b>.<br>
+        <img src="Slike/Sinus.PNG" style="width:10%"><br><br>
+        - <b>Time</b>: je vozlišče, ki nima vhodov, nudi pa več izhodov ter se ga zato uporablja kot vhod v druga vozlišča.<br>
+        <img src="Slike/Time.PNG" style="width:10%"><br><br>    
+    </p>
+
+        <p>Vozlišče dodamo v graf z desnim klikom in nato v vnosno polje <b>Create Node</b> vpišemo ime željenega vozlišča. Med seboj jih povežemo tako, da kliknemo in držimo izhod prvega vozlišča, ga povežemo z vhodom drugega vozlišča in spustimo tipko na miški (princip drag and drop). Senčilnik shranimo s klikom na gumb <b>Save Asset</b> v zgornjem levem kotu okna <b>Sahovnica</b>.</p>
+        <p>Poskusi sam povezati in nastaviti parametre vozlišč, tako da bo na koncu šahovnica dvobarvna in izmenično enakomerno skozi čas spreminjala barve na poljih.</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <p>Rešitev naj bi izgledala nekako takole:</p>
+        <video width="960" height="720" autoplay loop>
+            <source src="../KlubGaja/Slike/shader_test.mp4" type="video/mp4">
+        </video><br><br> 
+
+
+        <p>Senčilnik uporabimo tako, da ustvarimo nov material, ki ga poimenujemo <b>Sahovnica</b> in namesto senčilnika <b>Universal Render Pipeline/Lit</b> izberemo senčilnik Sahovnica v zavihku <b>Shader Graphs</b>.</p><br><br>
+        <img src="Slike/dodatnaVsebina11.PNG" style="width:30%"><br><br>
+        <p>Ustvarjen material lahko sedaj uporabimo na igralnem objektu Plesisce v sceni. </p><br><br>
+        <img src="Slike/dodatnaVsebina12.PNG" style="width:50%"><br><br><br>
+
+        <p>Svoje znanje, ki si ga pridobil tekom tega projekta, lahko preveriš s kratkim kvizom:</p><br>
+
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSef5t47D2Jfjf1RUkhqE7N0UUtxC0kP1naQ0rHs71SH9mUf-Q/viewform?embedded=true" width="640" height="2278" frameborder="0" marginheight="0" marginwidth="0">Nalaganje …</iframe>
+    </section>
+
+
+
+<section class="footer">
+    <div class="row-foot">
+        <div class="footer-col1">
+            <h3>KONTAKT</h3>
+            <p>
+            <i class="fa fa-envelope"></i>&emsp;gaja.zumer@gmail.com<br><br>
+            <i class="fa fa-linkedin"></i>&emsp;www.linkedin.com/in/gaja-zumer
+            
+          
+        </div>
+        <div class="footer-col2">
+            
+           
+        </div>
+        <div class="footer-col3">
+            
+            <img src="../../slike/vr_pasica1.png">
+        </div>
+    </div>
+   
+</section>
+
+<!---footer1-->
+<section class="footer1">
+    <p>Narejeno z &nbsp; <i class="fa fa-heart-o"></i> &emsp;|&emsp;Gaja Žumer</p>
+</section>
+
+
+
+</body>
+</html>

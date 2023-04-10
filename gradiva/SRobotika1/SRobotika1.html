@@ -1,0 +1,401 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaja Žumer</title>
+    <link rel="stylesheet" href="../delavnica.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="arrow-btn">
+        <a href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
+    </div>
+
+
+    <section class="domov-header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../../index.html">O MENI</a></li>
+                    <li><a href="../../gradivo.html">GRADIVO</a></li>
+                </ul>
+            </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section>
+
+
+    <section class="delavnica">
+
+        <h1>Navodila za izdelavo aplikacije Sodelujoča robotika - 1. del</h1>
+        <p>V tem projektu se boste spoznali s pojmom <b>sodelujoča robotika</b> in izdelali aplikacijo, kjer uporabnik prek drsnih gumbov (drsnikov) premika
+            3D model robota po sklepih. Za implementacijo obogatene resničnosti bomo uporabili programsko orodje Vuforia.</p>
+          
+            <video width="960" height="720" autoplay loop>
+                <source src="Slike/SodelujocaRobotika.mp4" type="video/mp4">
+            </video>   
+        
+        <p>Datoteke, ki ti bodo pomagale pri izdelavi aplikacije, lahko preneseš s klikom na spodnji gumb.</p><br>
+        <div style="text-align: center;">
+            <a href="../SRobotika1/SRobotika1/Gradiva.zip" download>
+                    <img src="../../slike/download-icon.png" style="width:5%">
+            </a></div><br>
+
+            <h2>Sodelujoča robotika</h2>
+<p>Besedo robot si je leta 1920 izmislil češki dramski pisatelj znanstvene fantastike Karel Čapek in jo uporabil v svoji igri R. U. R. (»Rossumovi univerzalni roboti«). V češčini <em>robota</em>
+    pomeni <em>delo</em> oziroma <em>suženj</em>. Takrat so bili roboti znanstvena fantastika, dandanes pa jih uporabljamo v medicini, gospodinjstvu, proizvodnji, vojski, raziskovalne namene itd.
+    Največ robotov se uporablja v industriji, kjer opravljajo najrazličnejša dela: strega in manipulacija z objekti, paletizacija, varjenje, barvanje, meritve in druge avtomatizirane aplikacije.
+    Roboti so pri svojem delu na pram človeku močnejši (imajo večjo nosljivost), natančnejši, bolj ponovljivi (en gib lahko robot ponavlja hitreje in natančneje kot človek), lahko delajo brez premora in enakomerno, delajo v človeku težkih delovnih pogojih in se ne pritožujejo nad monotonostjo dela.
+    <br><br>
+    Zaradi varnostnih razlogov je potrebno industrijske robote ograditi z zaščitnimi ograjami, ki preprečujejo interakcijo robota in človeka. Ti roboti so namreč togi in brez sposobnosti 
+    zaznavanja okolice in ovir, ki bi se znašle v delovnem prostoru robota. Druga pomanjkljivost industrijskih robotov pa je nezmožnost prilagajanja na nove situacije. Posamezna robotska celica
+    je bila namreč narejena za avtomatizacijo določene naloge. V kolikor se samo malo spremeni geometrija obdelovanca ali naloga sama, je potrebnega veliko dela, da robotsko celico prilagodimo novi nalogi (desna slika).
+    Nefleksibilnost in potencialna nevarnost človeku sta glavna razloga za razvoj sodelujočih robotov, saj omogočajo prisotnost človeka ob robotu med delovanjem brez varnostnih ograj (leva slika).<br><br>
+
+    <div class="row">
+        <div class="column">
+            <img src="Slike/sodelujoci_proizvodnja.jpg" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="Slike/industrijski_proizvodnja.jpg" style="width:100%">
+        </div>
+    </div> <br><br>
+
+<p>Da so sodelujoči roboti relativno varni za delo s človeku, omogočajo različni senzorji (npr. senzor sile), ki zaznajo vpliv zunanjih sil na površino robota. Če izmerjena sila preseže določeno vrednost, se robot nemudoma ustavi.  
+    Sodelovanje robota in človeka združuje pozitivne lastnosti z obeh strani. Robot pripomore k visoki natančnosti, večji nosljivosti in veliki ponovljivosti, človek pa k fleksibilnosti.</p>
+<p>Primeri sodelujočih robotov so: Franka Emika Panda, Yaskawa Motoman HC10, KUKA iiwa, Fanuc (CR-35iA, CR-7iA, CR-4iA), Universal Robots (UR3, UR5, UR10), itd. Večino omenjenih robotov si lahko ogledate v
+    Laboratoriju za robotiko na Fakulteti za elektrotehniko.
+</p><br>
+<img src="Slike/sodelujoci_roboti.png" style="width:100%"><br><br>
+
+
+           
+<p>V tem projektu in nadaljevalnem projektu Sodelujoča robotika - 2. del se bomo pobliže spoznali s sodelujočim robotom Franka Emika Panda. Franka Emika Panda je sodelujoči robot
+    proizveden v Nemčiji. Ima sedem sklepov, v katerih so nameščeni merilniki sile. Merjenje sile in navorov v sklepih omogoča zaznavanje trkov z okolico (levo) in vodenje z roko (desno).
+To pomeni, da za premikanje robotske roke ne potrebujemo ročne učne enote (ang. <em>teach pendant</em>), tako kot pri industrijskih robotih, ampak lahko vrh robota primemo z roko in ga premaknemo na poljubno mesto.</p>
+
+<video width="640" height="480" autoplay loop>
+    <source src="Slike/franka_safety_short.mp4" type="video/mp4">
+</video> 
+
+<video width="640" height="480" autoplay loop>
+    <source src="Slike/franka_hand.mp4" type="video/mp4">
+</video> 
+<h2>Postavitev scene</h2>
+
+        <p>Najprej ustvari nov Unity projekt.<br>
+            Prenesi gradivo s pripravljenimi datotekami in uvozi datoteko formata <b>.unitypackage</b> (<b>Assets > Import Package > Custom Package</b>).</p><br><br>
+                <img src="Slike/priprava_projekta1.PNG" style="width:40%"><br><br>
+
+        <p>Aplikacija je sestavljena iz ene scene, v kateri se v osnovi nahaja samo igralni objekt <b>FrankaPanda</b>. Uvozi prefab robota (datoteka formata <b>.prefab</b>), ki se nahaja v mapi <b>Assets > 3DModeli</b>.
+            Da se bodo sklepi robota vrteli okoli pravilnih osi, v orodni vrstici zgoraj spremeni <b>Toggle Tool Handle Position</b> in <b>Toggle Tool Handle Rotation</b> v <b>Pivot</b> in <b>Local</b>.
+            Preveri, da se sklepi pravilno vrtijo tako, da si izbereš enega izmed sklepov robota, ki so otroci igralnega objekta <b>FrankaPanda</b>, in ga zavrtiš okoli primerne osi.  
+        </p><br><br>
+        <img src="Slike/pripravaScene1.PNG" style="width:80%"><br><br>
+  
+                
+
+        <h2>Implementacija uporabniškega vmesnika</h2>
+            <p>Uporabniški vmesnik je sestavljen iz sedmih drsnikov (ang. <em>slider</em>), ki bodo vplivali na rotacijo posameznih sklepov robota.
+                Če želimo v sceno postaviti drsnik, moramo najprej kreirati <b>Platno</b>. Tega najdemo v zavihku <b>UI > Canvas</b>, do katerega dostopamo z desnim klikom v okno <b>Hierarhija</b>. Preimenuj ga v <b>Platno</b>.
+                V komponenti <b>Canvas</b> spremeni <b>Render Mode</b> v <b>Screen Space - Overlay</b> in v komponenti <b>Canvas Scaler</b> podaj resolucijo naprave, na kateri boš poganjal aplikacijo (npr. Samsung Galagy S7 ima resolucijo 1440 x 2560).</p><br>
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/UI1.PNG" style="width:70%">
+                </div>
+                <div class="column">
+                    <img src="Slike/Platno1.PNG" style="width:80%">
+                </div>
+            </div> <br><br>
+
+            <P>Da si boš bolje predstavljal kako bo uporabniški vmesnik izgledal, lahko v oknu <b>Game</b> v zgornji vrstici prilagodiš resolucijo okna tvoji napravi.</P><br><br>
+
+            <img src="Slike/Platno2.PNG" style="width:60%"><br><br>
+
+            <p>Nato ustvari sedem drsnikov, ki naj bodo otroci objekta <b>Platno</b>. Najdemo jih v zavihku <b>UI > Slider</b>. Poimenuj jih <b>Drsnik1</b>, <b>Drsnik2</b>, ..., <b>Drsnik7</b>.
+                Prav tako jim prilagodi pozicijo in velikost in po želji spremeni barvo.</p><br><br>
+            
+            <div class="row">
+                <div class="column3">
+                    <img src="Slike/UI2.PNG" style="width:100%">
+                </div>
+                <div class="column4">
+                    <img src="Slike/Platno3.PNG" style="width:50%">
+                </div>
+            </div> <br><br>
+
+            <p>Spremeniti je potrebno tudi območje vrednosti (minimalna in maksimalna vrednost drsnika) in pa začetno vrednost ob zagonu aplikacije. Tu se je potrebno ravnati po dokumentaciji robota Franka.
+                Kot je prikazano na spodnji sliki, so sklepi označeni z A1, A2, ..., A7. Območje zasuka vsakega izmed sklepov najdete v tabeli desno (<em>joint position limits</em>).<br>
+                Začetne vrednosti naj bodo:<br>
+                A1(začetna): 0°,<br>
+                A2(začetna): 0°,<br>
+                A3(začetna): 0°,<br>
+                A4(začetna): -10°,<br>
+                A5(začetna): 0°,<br>
+                A6(začetna): 0°,<br>
+                A7(začetna): 0°,<br><br>
+            </p>
+            
+            
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/Franka.PNG" style="width:90%">
+                </div>
+                <div class="column">
+                    <img src="Slike/UI5.PNG" style="width:100%">
+                </div>
+            </div> <br><br>
+
+            <p>Za <b>Drsnik1</b> moramo potemtakem vrednost <b>Min Value</b> nastaviti na -166, <b>Max Value</b> na 166 in <b>Value</b> na 0.</p><br><br>
+
+            <img src="Slike/UI6.PNG" style="width:40%">
+
+        <h2>Implementacija logike</h2>
+
+        <p>Za logiko premikanja robota po sklepih bomo uporabili vnaprej pripravljeno skripto <b>PremikanjePoSklepih</b>, ki se nahaja v mapi <b>Assets > Skripte</b>. Ta skrbi, da se sklepi robota vrtijo glede na vrednosti drsnikov.
+        Najprej jo dodaj kot komponento na igralni objekt <b>RobotFranka</b>. V vnosna polja povleci igralni objekt <b>sklep1</b> in <b>Drsnik1</b>, zapiši hitrost vrtenja ter aplikacijo zaženi s klikom na gumb <b>Play</b>.
+        Skripta je opremljena s komentarji, manjka pa ji nekaj vrstic kode, ki čakajo nate, da jih dopolniš. Navodila najdete v sami skripti v obliki komentarjev.</p><br><br>
+
+
+
+            <img src="Slike/Logika2.PNG" style="width:70%"><br><br>
+       
+        <p>Namig: Os vrtenja lahko preberemo iz scene, če kliknemo na posamezen sklep v oknu <b>Hierarhija</b>. Koordinatna os rdeče barve je <b>x</b> os, zelene je <b>y</b> os in modre barve je <b>z</b> os.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Logika4.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Logika3.PNG" style="width:30%">
+            </div>
+        </div> <br><br>
+
+
+        <h2>Implementacija obogatene resničnosti</h2>
+
+        <p>Naslednji korak je implementirati obogateno resničnost, tako da bo aplikacija prepoznala slikovni marker in nanj postavila našo sceno s z robotom. Pri tem bomo uporabili
+            algoritme računalniškega vida, ki so del programskega orodja <b>Vuforia</b>.</p><br><br>
+        <p>Prijavi se v <a href="https://developer.vuforia.com/" target="_blank"><b>Vuforia Developer Portal</b></a> in najprej pod zavihkom <b>License Manager</b> s klikom na gumb <b>Get Basic</b> ustvari svojo licenco, ki jo boš moral vnesti v vsak svoj projekt, ki bo uporabljal Vuforio.</p><br><br>
+<p>Če si licenco že ustvaril in si tudi že zgeneriral podatkovno bazo s slikovnim markerjem pri enem izmed prejšnjih projektov, preskoči naslednjih nekaj korakov.</p><br><br>
+        <img src="Slike/Vuforia5.PNG" style="width:50%"><br><br>
+
+        <p>Licenco poimenuj in svojo izbiro potrdi s klikom na gumb <b>Confirm</b>.</p><br><br>
+
+        <img src="Slike/Vuforia6.PNG" style="width:50%"><br><br>
+
+        <p>Nato pod zavihkom <b>Target Manager</b> ustvari novo podatkovno bazo s klikom na <b>Add Database</b>. V tej bazi se bodo nahajali vsi naučeni slikovni markerji oziroma tarče.</p><br><br>
+
+        <img src="Slike/Vuforia7.PNG" style="width:50%"><br><br>
+
+        <p>Podatkovno bazo poimenuj in potrdi svojo izbiro s klikom na gumb <b>Create</b>.</p><br><br>
+
+        <img src="Slike/Vuforia8.PNG" style="width:30%"><br><br>
+
+        <p>V naslednjih korakih bomo Vuforio naučili kako izgleda naša slikovna tarča. Slika tarče se nahaja v datoteki z gradivi (<b>2d_marker.jpg</b>). Marker uvozi v Vuforia Developer Portal s klikom na gumb <b>Add Target</b>.<br>
+        Ker gre v našem primeru za prepoznavo 2D slikovnega markerja, označi tip markerja kot <b>Image</b>, poišči mesto datoteke s sliko markerja, vnesi njegovo širino v metrih in po želji spremeni ime.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia9.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia10.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+        
+        <p>Po nekaj minutah ( &#60 5min) je slikovni marker sprocesiran. Če kliknemo na ime markerja, se nam odpre okno z njegovimi informacijami. S klikom na gumb <b>Show Features</b> lahko vidimo
+        točke, ki jih je Vuforia prepoznala za zanimive oziroma za ključne karakteristike slike, ki jih bo iskala v sliki iz kamere med poganjanjem aplikacije. Opazimo lahko, da se karakteristične točke
+    nahajajo na ostrih robovih in na prehodu med dvema kontrastnima barvama.<br>
+Ker je karakterističnih točk veliko, si je slikovni marker prislužil oceno 5 zvezdic.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia11.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia12.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+
+        <p>Sedaj imamo vse potrebno, da implementiramo Vuforio v naš Unity projekt. Celoten paket programov in funkcij, ki jih ponuja Vuforia, naložimo v obliki Unity paketa (<b>add-vuforia-package-10-9-3.unitypackage</b>), ki je shranjen v datoteki z gradivi.
+            V Unity ga naložimo prek <b>Assets > Import Package > Custom Package</b> in izbiro potrdimo s klikom na gumb <b>Import</b> in nato <b>Update</b>.<br><br>
+        </p>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia14.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuforia15.PNG" style="width:100%">
+            </div>
+        </div> <br><br>
+
+        <p>V sceno postavi objekt ARCamera (<b>Vuforia Engine > ARCamera</b>), ki ima enako vlogo kot <b>Main Camera</b> z dodanimi komponentami za prepoznavo slike. Objekta <b>Main Camera</b> zato ne potrebujemo več in ga lahko
+        izbrišemo iz scene.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuf1.PNG" style="width:70%">
+            </div>
+            <div class="column">
+                <img src="Slike/Vuf2.PNG" style="width:50%">
+            </div>
+        </div> <br><br>
+
+        <p>V objektu <b>ARCamera</b> kliknemo na gumb <b>Open Vuforia Engine configuration</b> v komponenti <b>Vuforia Behaviour</b> in v vnosno polje <b>App License Key</b> skopiramo licenco, ki smo jo predhodno ustvarili na Vuforia Developer Portalu.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/Vuforia13.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/vuforia18.PNG" style="width:70%">
+            </div>
+        </div> <br><br>
+
+        <p>Naslednji korak je v sceno implementirati slikovni marker, na katerega bo vezan objekt <b>FrankaPanda</b>. Slikovni marker (<b>Image Target</b>) se nahaja v meniju <b>Vuforia Engine > Image Target</b>.
+        Za pravilno delovanje potrebuje informacijo o sliki, ki jo mora iskati in ji slediti, zato moramo njegovi komponenti <b>Image Target Behaviour</b> dodati podatkovno bazo, ki smo jo predhodno ustvarili
+    v Vuforia Developer Portalu. Iz portala jo na računalnik prenesemo s klikom na gumb <b>Download Database</b>; preden jo uvozimo v objekt <b>Image Target</b> jo je potrebno prenesti iz mape v računalniku v Unity projekt (<b>Assets > Import Package > Custom Package</b>).</p><br><br>
+
+    <div class="row">
+        <div class="column">
+            <img src="Slike/Vuf3.PNG" style="width:70%">
+        </div>
+        <div class="column">
+            <img src="Slike/Vuforia20.PNG" style="width:100%">
+        </div>
+    </div> <br><br>
+
+    <img src="Slike/Vuforia21.PNG" style="width:50%"><br><br>
+
+    <p>Spremenimo še velikost objekta <b>FrankaPanda</b>, da bo sorazmerne velikosti z objektom <b>Image target</b> in postavimo objekt <b>FrankaPanda</b> pod objekt <b>Image target</b>, tako da bo njegov otrok.</p><br><br>
+
+    <img src="Slike/Vuf4.PNG" style="width:80%"><br><br>
+
+    <p>V zadnjem koraku razvoja aplikacije moramo aplikacjio zgraditi in jo naložiti na Android napravo, kjer jo bomo tudi stestirali. V meniju <b>File > Build Settings</b> klikni na gumb <b>Add Open Scenes</b>.
+        En Unity projekt ima lahko namreč več scen, ni pa nujno, da so vse namenjene končni aplikaciji (nekatere se lahko uporabljajo samo za prototipiranje).<br>
+    Ker bomo aplikacijo poganjali na Android telefonu, moramo spremeniti platformo. Izberi platformo <b>Android</b> in svojo izbiro potrdi s klikom na gumb <b>Switch Platform</b>. V meniju <b>Player Settings</b> (levo spodaj) v zavihku <b>Player > Other Settings > Identification</b>
+    spremeni <b>Minimum API Level</b> na <b>Android 8.0 'Oreo' (API level 26).</b><br><br>
+    Nato klikni na gumb <b>Build</b> in izberi lokacijo, kamor naj se shrani končna aplikacija.</p><br><br>
+
+    <div class="row">
+        <div class="column">
+            <img src="Slike/Build4.PNG" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="Slike/Build3.PNG" style="width:100%">
+        </div>
+    </div> <br><br>
+
+        <h2>Dodatne vsebine</h2>
+
+        <p>Kot dodatek k aplikaciji lahko implementiramo tudi gumba, ki bosta odpirala in zapirala prijemalo robota. V ta namen na <b>Platno</b> dodaj dva gumba (<b>Create > Button</b>) in ju poimenuj <b>Odpri</b> in <b>Zapri</b>.
+            Prilagodi tudi njuni velikosti in poziciji na <b>Platnu</b>, spremeni napis in po želji zamenjaj barvo.</p><br><br>
+         
+
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/DodatneVsebine13.PNG" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Slike/Odpri.PNG" style="width:80%">
+                </div>
+            </div> <br><br>
+
+            <p>Robotsko prijemalo s prstoma animiramo tako, da v oknu <b>Hierarhija</b> označimo igralni objekt <b>prijemalo</b> in v meniju <b>Window > Animation > Animation</b> kreiramo novo animacijo. Poimenujemo jo <b>Odpri</b>.<br><br>
+            <img src="Slike/DodatneVsebine20.PNG" style="width:80%"><br><br>
+
+            Z klikom na gumb <b>Add Property</b> dodamo parametre, ki jih želimo animirati. V tem primeru sta to poziciji objekta <b>prst1</b> in <b>prst2</b>.<br><br>
+            <img src="Slike/DodatneVsebine2.PNG" style="width:80%"><br><br>
+
+            <p>Animacijo shranimo tako, da kliknemo na rdeč krogec, dodajamo korake animacije in spreminjamo pozicije obeh prstov. Ko smo z animacijo zadovoljni, ponovno kliknemo rdeč krogec in prenehamo s shranjevanjem animacije.</p><br><br>
+
+            <img src="Slike/DodatneVsebine4.PNG" style="width:80%"><br><br>
+
+            <p>Vsako nadaljno animacijo kreiraj s klikom na gumb z imenom trenutni animacije in nato izberi <b>Create New Clip</b>.</p><br><br>
+
+            <img src="Slike/DodatneVsebine6.PNG" style="width:25%"><br><br>
+
+            <p>V mapi <b>Assets</b> ustvari novo mapo in jo poimenuj <b>Animacije</b>. Vanjo shrani vse animacije. V mapi <b>Assets > Animacije</b> ustvari tudi <b>Animator</b> (<b>Create > Animator Controller</b>),
+            ki bo skrbel za prehajanje med animacijami; poimenumj ga <b>Prijemalo</b>.</p> <br><br>
+            <img src="Slike/DodatneVsebine11.PNG" style="width:40%"><br><br>
+            <p>Ob zagonu aplikacije se mora predvajati animacija <b>Idle</b>, ob kliku na gumb <b>Odpri</b> in <b>Zapri</b> pa se mora začeti predvajati animacija odpiranja in zapiranja.</p><br><br>
+        <p>Oblika animatorja je naslednja:</p><br><br>
+        <img src="Slike/AnimacijaDiagram.png" style="width:70%"><br><br>
+
+        <p>Prehode med animacijami bomo nadzorovali z dvema parametroma tipa <b>Trigger</b>: <b>Odpri</b> in <b>Zapri</b>. Ustvari parametre in jih veži na prehode med aplikacijami. To narediš tako, da klikneš
+        na puščico med dvema animacijama in v oknu <b>Inspector</b> v zavihku <b>Conditions</b> klikneš na ikono <b>+</b> ter izbereš parameter, ki bo aktiviral prehod iz ene animacije v drugo.</p><br><br>
+
+        <div class="row">
+            <div class="column">
+                <img src="Slike/DodatneVsebine9.PNG" style="width:70%">
+            </div>
+            <div class="column">
+                <img src="Slike/DodatneVsebine10.PNG" style="width:70%">
+            </div>
+        </div> <br><br>
+
+        <p>Na koncu bi moral animator izgledati nekako takole:<br><br></p>
+        <img src="Slike/DodatneVsebine12.PNG" style="width:100%"><br><br>
+        
+        <p>V oknu <b>Inspector</b> za vsako animacijo odkljukaj <b>Loop Time</b>, saj želimo, da ob kliku na gumb <b>Zapri</b> robot samo enkrat zapre prijemalo.</p><br><br>
+        <img src="Slike/DodatneVsebine8.PNG" style="width:30%"><br><br>
+
+        <p>Sledi še zadnji korak, kar je povezava med pritiskom na gumb in aktivacijo trigger parametra, ki nato sproži predvajanje animacije. To storimo v oknu <b>Inspector</b> enega izmed gumbov. 
+            V razdelku <b>Button</b> se nahaja funkcija <b>On Click ()</b>, ki se izvede ob kliku na gumb. S klikom na <b>+</b> ikono se nam odpre vnosno polje, kamor povlečemo igralni objekt <b>prijemalo</b>. Ta namreč vsebuje komponento
+        <b>Animator</b>, na katero želimo s klikom na gumb vplivati. S klikom na okence <b>Function</b> izberemo funkcijo, ki se bo izvedla ob kliku na gumb. Funkcija, ki jo potrebujemo se nahaja v <b>Animator > SetTrigger (string)</b>.
+      </p><br><br>
+      <img src="Slike/DodatneVsebine14.PNG" style="width:60%"><br><br>
+
+<p>V edino prazno polje še vpišemo ime trigger parametra, ki ga želimo aktivirati ob kliku na gumb.</p><br><br>
+<p>Podobno naredimo tudi za drugi gumb.</p><br><br>
+        <div class="row">
+            <div class="column">
+                <img src="Slike/DodatneVsebine18.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/DodatneVsebine19.PNG" style="width:100%">
+            </div>
+        </div><br><br><br>
+        
+        <p>Svoje znanje, ki si ga pridobil tekom tega projekta, lahko preveriš s kratkim kvizom:</p><br>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdL5EMHA74BW3KtDibgn9OHYmlvHl8BwWL7oba-lurfkOj5LA/viewform?embedded=true" width="640" height="3180" frameborder="0" marginheight="0" marginwidth="0">Nalaganje …</iframe>
+
+    </section>
+
+
+<section class="footer">
+    <div class="row-foot">
+        <div class="footer-col1">
+            <h3>KONTAKT</h3>
+            <p>
+            <i class="fa fa-envelope"></i>&emsp;gaja.zumer@gmail.com<br><br>
+            <i class="fa fa-linkedin"></i>&emsp;www.linkedin.com/in/gaja-zumer
+        </div>
+        <div class="footer-col2">
+            
+            
+        </div>
+        <div class="footer-col3">
+           
+            <img src="../../slike/vr_pasica1.png">
+        </div>
+    </div>
+   
+</section>
+
+<!---footer1-->
+<section class="footer1">
+    <p>Narejeno z &nbsp;<i class="fa fa-heart-o"></i> &emsp;|&emsp;Gaja Žumer</p>
+</section>
+
+
+
+</body>
+</html>

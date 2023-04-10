@@ -1,0 +1,361 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaja Žumer</title>
+    <link rel="stylesheet" href="style_besednjak.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="arrow-btn">
+        <a href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
+    </div>
+
+    <section class="domov-header">
+    <p>SPLETNA STRAN JE V DELU</p>
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../index.html">O MENI</a></li>
+                    <li><a href="../gradivo.html">GRADIVO</a></li>
+                </ul>
+            </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section>
+
+
+
+    <section class="besednjak">
+    <h1>Besednjak</h1>
+
+    <section class="crkelink">
+        <a href="#A">A</a>
+        <a href="#B">B</a>
+        <a href="#C">C</a>
+        <a href="#Č">Č</a>
+        <a href="#D">D</a>
+        <a href="#E">E</a>
+        <a href="#F">F</a>
+        <a href="#G">G</a>
+        <a href="#H">H</a>
+        <a href="#I">I</a>
+        <a href="#J">J</a>
+        <a href="#K">K</a>
+        <a href="#L">L</a>
+        <a href="#M">M</a>
+        <a href="#N">N</a>
+        <a href="#O">O</a>
+        <a href="#P">P</a>
+        <a href="#R">R</a>
+        <a href="#S">S</a>
+        <a href="#Š">Š</a>
+        <a href="#T">T</a>
+        <a href="#U">U</a>
+        <a href="#V">V</a>
+        <a href="#Z">Z</a>
+        <a href="#Ž">Ž</a>
+    </section>
+
+    <dl>
+
+        <dt>2D grafika <span class="oklepaj">(ang. <span class="ital">2D graphics</span>)</span></dt>
+        <dd>Upodobljeni predmeti so dvodimenzionalni (imajo širino in višino).</dd>
+
+        <dt>3D grafika <span class="oklepaj">(ang. <span class="ital">3D graphics</span>)</span></dt>
+        <dd>Upodobljeni predmeti so tridimenzionalni (imajo širino, višino in globino).</dd>
+
+        <dt>3D model</dt>
+        <dd>3D model je matematična reprezentacija tridimenzionalnega objekta. Definiran je z zbirko točk v 3D prostoru, ki so povezane z različnimi geometrijskimi entitetami (poligoni, robovi, ...). Ustvarimo jih ročno, algoritemsko ali s skeniranjem realnih objektov. Unity lahko upravlja s 3D modeli formata .fbx, .obj., .dae, .3ds in .dxf.</dd>
+
+        <dt id="A">AI <span class="oklepaj">(ang. <span class="ital">artificial intelligence</span>)</span></dt>
+        <dd>glej "Umetna inteligenca".</dd>
+
+        <dt>Animacija <span class="oklepaj">(ang. <span class="ital">animation</span>)</span></dt>
+        <dd>Simulacija gibanja objekta.</dd>
+
+        <dt>Animacija v mirovanju<span class="oklepaj">(ang. <span class="ital">idle</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Animator <span class="oklepaj">(ang. <span class="ital">animator</span>)</span></dt>
+        <dd>Animiran igralni objekt, katerega animacijo želimo predvajati, mora vsebovati komponento Animator, ki je vezana na Animator Controller. Ta hrani v sebi vse animacije, ki se nanašajo na izbrani igralni objekt ter prehode med njimi.</dd>
+
+        <dt>AR <span class="oklepaj">(ang. <span class="ital">augmented reality</span>)</span></dt>
+        <dd>Glej "Obogatena resničnost".</dd>
+
+        <dt>Avatar</dt>
+        <dd>.</dd>
+
+        <dt id="B">Blender</dt>
+        <dd>Brezplačen in odprtokoden program za ustvarjanje 3D vsebin. Podpira modeliranje, rigging, animiranje, simuliranje, upodabljanje, sledenje gibanju itd.</dd>
+
+        <dt id="C">C# <span class="oklepaj">(ang. <span class="ital">C sharp</span>)</span></dt>
+        <dd>Programski jezik, ki se uporablja za pisanje skript v igralnem pogonu Unity.</dd>
+
+        <dt id="D">Direktna kinematika <span class="oklepaj">(ang. <span class="ital">direct kinematics</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt id="F">Fizika igre <span class="oklepaj">(ang. <span class="ital">game physics</span>)</span></dt>
+        <dd>Zakoni fizike, ki so definirani znotraj igre; lahko posnemajo resnične zakone ali pa so namenoma drugačni.</dd>
+
+        <dt>FPS <span class="oklepaj">(ang. <span class="ital">frames per second</span>)</span></dt>
+        <dd>Število upodobljenih slik na sekundo. V igricah je FPS mera za hitrost igre.</dd>
+
+        <dt id="G">Globalni koordinatni sistem <span class="oklepaj">(ang. <span class="ital">global coordinate system</span>)</span></dt>
+        <dd>Prostor, v katerem se nahajajo vsi ostali objekti, je določen z globalnim koordinatnim sistemom.</dd>
+
+        <dt>Grafični cevovod <span class="oklepaj">(ang. <span class="ital">rendering pipeline</span>)</span></dt>
+        <dd>Grafični cevovod je postopek, ki za vhod prejme prostorsko sceno in kot
+            izhod poda dvodimenzionalno rasterizirano sliko. Ko mora grafični procesor upodobiti objekt, se na njem izvede zaporedje zapletenih
+            ukazov. Ti v več fazah pretvorijo podatke o ogliščih in trikotnikih, ki opisujejo zgradbo
+            objekta v dejanske fragmente na ekranu. Ta skupek faz se imenuje grafični cevovod (angl.
+            rendering pipeline)</dd>
+
+        <dt>Gradnja igra <span class="oklepaj">(ang. <span class="ital">Build</span>)</span></dt>
+        <dd> .</dd>
+
+        <dt id="H">Hrošč <span class="oklepaj">(ang. <span class="ital">bug</span>)</span></dt>
+        <dd>Kakršna koli razvojna težava, zaradi katere igra v trenutnem stanju ni zabavna, stabilna ali pa se je sploh ne da zagnati.</dd>
+
+        <dt id="I">If stavek <span class="oklepaj">(ang. <span class="ital">if statement</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Igralni objekt <span class="oklepaj">(ang. <span class="ital">GameObject</span>)</span></dt>
+        <dd>Liki, props, scenery in Unity.</dd>
+
+        <dt>Igralni pogon <span class="oklepaj">(ang. <span class="ital">game engine</span>)</span></dt>
+        <dd>Igralni pogon je sistem/programska platforma, ki vsebuje programska orodja in sisteme (npr. sistemi za upodabljanje, fiziko, implementacijo AI-ja) za razvoj aplikacij (npr. Unity, UnrealEngine, Godot, ...).</dd>
+
+        <dt>Igralnost <span class="oklepaj">(ang. <span class="ital">gameplay</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Inverzna kinematika <span class="oklepaj">(ang. <span class="ital">inverse kinematics</span>)</span></dt>
+        <dd>Postopek ugotavljanja gibanja med seboj povezanih segmentov 2D ali 3D modela.</dd>
+        
+        <dt id="K">Kamera <span class="oklepaj">(ang. <span class="ital">camera</span>)</span></dt>
+        <dd>Igralni objekt, skozi katerega igralec opazuje svet.</dd>
+
+        <dt>Komponenta <span class="oklepaj">(ang. <span class="ital">component</span>)</span></dt>
+        <dd>Nekaj kar je pritrjeno na igralni objekt, da spremeni njegovo funkcionalnost (npr. material, delovanje fizike, AI, ...).</dd>
+
+        <dt>Koordinatni sistem <span class="oklepaj">(ang. <span class="ital">coordinate system</span>)</span></dt>
+        <dd>Sistem, ki uporablja eno ali več števil (koordinat) za enolično določanje položaja točk v prostoru. Položaj objekta v 3D prostoru je enolično določen s koordinatami (x, y, z) vzdolž koordinatnih osi x, y in z.</dd>
+
+        <dt id="L">LOD <span class="oklepaj">(ang. <span class="ital">level of detail</span>)</span></dt>
+        <dd>Glej "Raven podrobnosti".</dd>
+
+        <dt>Logična spremenljivka <span class="oklepaj">(ang. <span class="ital">boolean, bool</span>)</span></dt>
+        <dd>Pri programiranju se podatki shranjujejo v spremenljivke. Od tipa podatka je odvisen tudi tip spremenljivke; ti so lahko številčni, črkovni itd. Boolean je logična spremenljivka, ki lahko shranjuje vrednosti true in false.</dd>
+
+        <dt>Lokalni koordinatni sistem <span class="oklepaj">(ang. <span class="ital">local coordinate system</span>)</span></dt>
+        <dd>Vsak objekt v prostoru določa lasten lokalni prostor, ki je vezan na njegovo pozicijo in orientacijo ter predstavljen z lokalnim koordinatnim sistemom.</dd>
+        
+        <dt id="M">Mapiranje/preslikava <span class="oklepaj">(ang. <span class="ital">mapping</span>)</span></dt>
+        <dd>Odnos med materialom in teksturo.</dd>
+
+        <dt>Material <span class="oklepaj">(ang. <span class="ital">material</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Mehanika igre <span class="oklepaj">(ang. <span class="ital">game mechanics</span>)</span></dt>
+        <dd>Game mechanics are the specific elements or systems that make up the gameplay of a game. These can include things like character abilities, enemy AI, and level design..</dd>
+
+        <dt>Mešana resničnost <span class="oklepaj">(ang. <span class="ital">mixed reality</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Modeliranje <span class="oklepaj">(ang. <span class="ital">modeling</span>)</span></dt>
+        <dd>Proces izdelave 3D modelov objektov.</dd>
+
+        <dt>MR <span class="oklepaj">(ang. <span class="ital">mixed reality</span>)</span></dt>
+        <dd>glej "Mešana resničnost".</dd>
+
+        <dt>Mreža <span class="oklepaj">(ang. <span class="ital">mesh</span>)</span></dt>
+        <dd>Zbirka ploskev, robov in oglišč, ki določajo obliko 3D modela objekta.</dd>
+
+        <dt id="N">Navidezna resničnost <span class="oklepaj">(ang. <span class="ital">virtual reality</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Nebesna škatla <span class="oklepaj">(ang. <span class="ital">skybox</span>)</span></dt>
+        <dd>Kocka z različno teksturo na vsaki plošči, ki skupaj tvorijo ozadje igre v vseh smereh pogleda.</dd>
+
+        <dt>Neigrani lik <span class="oklepaj">(ang. <span class="ital">non playable character</span>)</span></dt>
+        <dd>Je lik v igri, ki ga ne upravlja igralec, temveč umetna inteligenca.</dd>
+
+        <dt>NPC <span class="oklepaj">(ang. <span class="ital">non playable character</span>)</span></dt>
+        <dd>glej "Neigrani lik".</dd>
+
+        <dt id="O">Oblika/Načrt igre <span class="oklepaj">(ang. <span class="ital">game design</span>)</span></dt>
+        <dd>Game design is the process of creating the overall vision for a game and designing the gameplay mechanics 
+        and systems. Game designers work with the rest of the development team to bring the game to life.</dd>
+
+        <dt>Oblika ravni<span class="oklepaj">(ang. <span class="ital">level design</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Obogatena resničnost <span class="oklepaj">(ang. <span class="ital">augmented reality</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Otrok <span class="oklepaj">(ang. <span class="ital">child</span>)</span></dt>
+        <dd>Igralni objekti se lahko med seboj povežejo v hierarhične skupine (grupe). Objekt, ki se v drevesni strukturi nahaja nižje, je otrok starševskega objekta.</dd>
+
+        <dt>Okostje <span class="oklepaj">(ang. <span class="ital">skeleton</span>)</span></dt>
+        <dd>Konstrukcija elementov (kosti), ki se uporablja pri animaciji objektov.</dd>
+
+        <dt id="P">Paket <span class="oklepaj">(ang. <span class="ital">package</span>)</span></dt>
+        <dd>Paket je zabojnik, ki vsebuje poljubno kombinacijo sredstev, senčilnikov, tekstur, vtičnikov in skript, ki izboljšajo in olajšajo razvoj igre.</dd>
+
+        <dt>Paket za razvoj programske opreme <span class="oklepaj">(ang. <span class="ital">software development kit; SDK</span>)</span></dt>
+        <dd>Nabor programskih orodij za lažji razvoj programske opreme (npr. SteamVR).</dd>
+
+        <dt>Prefab</dt>
+        <dd>.</dd>
+
+        <dt>Prototip</dt>
+        <dd>A prototype is an early version of a game that is used to test gameplay mechanics and systems. Prototypes are often rough and incomplete, but can be useful for testing ideas and gathering feedback.</dd>
+        
+        <dt  id="R">Računalniška grafika <span class="oklepaj">(ang. <span class="ital">computer graphics</span>)</span></dt>
+        <dd>Predstavitev in manipulacija slikovnih podatkov z uporabo računalnika, ki se izvaja na posebni programski in strojni opremi.</dd>
+
+        <dt>Raven podrobnosti <span class="oklepaj">(ang. <span class="ital">level of detail; LOD</span>)</span></dt>
+        <dd>Tehnika, ki v realnem času uporablja grafični cevovod za povečanje učinkovitosti upodabljanja scene.</dd>
+
+        <dt>Razhroščevanje <span class="oklepaj">(ang. <span class="ital">debugging</span>)</span></dt>
+        <dd>Proces iskanja in odpravljanja napak v igri.</dd>
+        
+        <dt>Rigging</dt>
+        <dd>Proces izdelave in povezovanja elementov/armature/skeleta objekta v sceni, ki jih lahko premikamo neodvisno drug od drugega in ga s tem animiramo.</dd>
+
+        <dt>Rotacija <span class="oklepaj">(ang. <span class="ital">rotation</span>)</span></dt>
+        <dd>Zasuk okoli dane osi.</dd>
+
+        <dt  id="S">Scena <span class="oklepaj">(ang. <span class="ital">scene</span>)</span></dt>
+        <dd>Celotno območje za urejanje igralnih objektov, s katerimi razvijamo igro.</dd>
+
+        <dt>SDK <span class="oklepaj">(ang. <span class="ital">software development kit</span>)</span></dt>
+        <dd>glej "Paket za razvoj programske opreme".</dd>
+
+        <dt>Senčilnik <span class="oklepaj">(ang. <span class="ital">shader</span>)</span></dt>
+        <dd>Ko mora grafični procesor upodobiti objekt, se na njem izvede zaporedje zapletenih
+            ukazov. Ti v več fazah pretvorijo podatke o ogliščih in trikotnikih, ki opisujejo zgradbo
+            objekta v dejanske fragmente na ekranu. Ta skupek faz se imenuje grafični cevovod (angl.
+            rendering pipeline) ali izrisovalni cevovod. Nekateri deli tega cevovoda so programirljivi
+            s programi imenovanimi senčilniki.
+        
+            Shaders are small scripts that hold the mathematical calculations of every pixel rendered in game and are largely based on the lighting input and configuration of materials. </dd>
+
+        <dt>Sistem delcev <span class="oklepaj">(ang. <span class="ital">particle system</span>)</span></dt>
+        <dd>Robusten sistem namenjen simulaciji tekočin, dima, oblakov, plamenov itd., kar bi bilo težko upodobiti z uporabo mrež in sprite-ov.</dd>
+
+        <dt>Skaliranje <span class="oklepaj">(ang. <span class="ital">scaling</span>)</span></dt>
+        <dd>Proces krčenja in raztezanja objektov vzdolž koordinatnih osi glede na lokalno koordinatno izhodišče.</dd>
+
+        <dt>Skripta <span class="oklepaj">(ang. <span class="ital">script</span>)</span></dt>
+        <dd>Je skupek C# kode, ki se izvaja med igranjem. Skripta je komponenta igralnega objekta in skrbi, da se aplikacija odziva na vhodne podatke uporabnika (npr. pritiskanje tipk na tipkovnici), skrbi za logiko igre, uporablja se jih tudi za ustvarjanje posebnih učinkov, implementacijo vedenja igralnega objeta, umetne inteligence itd.</dd>
+
+        <dt>Skriptiranje <span class="oklepaj">(ang. <span class="ital">scripting</span>)</span></dt>
+        <dd>Postopek izdelave skript.</dd>
+        
+        <dt>Sprite</dt>
+        <dd>2D bitna slika, ki se pri 3D vsebinah uporablja za izdelavo tekstur.</dd>
+
+        <dt>Sredstvo <span class="oklepaj">(ang. <span class="ital">asset</span>)</span></dt>
+        <dd>Nadpomenka za vse kar sestavlja igro (npr. liki, objekti, zvočni efekti, materiali, animacije itd.).</dd>
+        An asset is any type of art, audio, or other resource that is used in a game.
+
+        <dt>Starš <span class="oklepaj">(ang. <span class="ital">parent</span>)</span></dt>
+        <dd>Igralni objekti se lahko med seboj povežejo v hierarhične skupine (grupe). Objekt, ki se v drevesni strukturi nahaja višje, je starš objekta otrok. Lokalni koordinatni sistem starša predstavlja koordinatno izhodišče lokalnega koordinatnega sistema otroka.</dd>
+
+        <dt  id="T">Tekstura <span class="oklepaj">(ang. <span class="ital">texture</span>)</span></dt>
+        <dd>Textures are simple images, which is what the material can use to define a surface..</dd>
+
+        <dt>Testiranje igranja <span class="oklepaj">(ang. <span class="ital">playtesting</span>)</span></dt>
+        <dd>Playtesting is the process of having people play the game and provide feedback on the gameplay and overall experience. Playtesting can be used to identify and fix bugs, balance issues, and improve the overall quality of the game.</dd>
+
+        <dt>Togo telo <span class="oklepaj">(ang. <span class="ital">rigid body</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Transformacija <span class="oklepaj">(ang. <span class="ital">transformation</span>)</span></dt>
+        <dd>Sprememba pozicije, orientacije ali velikosti objekta.</dd>
+
+        <dt>Translacija <span class="oklepaj">(ang. <span class="ital">translation</span>)</span></dt>
+        <dd>Preslikava, pri kateri se vse točke danega objekta premaknejo za enako razdaljo v isti smeri.</dd>
+
+        <dt>Trkalnik <span class="oklepaj">(ang. <span class="ital">collider</span>)</span></dt>
+        <dd>Trkalnik je komponenta, ki se uporablja za zaznavanje trkov med igralnimi objekti. Tako kot mreža določa obliko objekta za namen upodabljanja, tako trkalnik določa obliko objekta za namen fizičnih trkov. Trkalnik je neviden in ni nujno, da je enake oblike kot mreža. Najenostavnejši in najmanj procesorsko zahtevni so primitivni trkalniki, ki imajo obliko škatle, sfere in kapsule. Če želimo, da se trkalnik tesno prilega mreži objekta, lahko združimo več primitivnih trkalnikov ali pa uporabimo mrežni trkalnik, ki je identičen mreži objekta.</dd>
+
+        <dt  id="U">Umetna inteligenca <span class="oklepaj">(ang. <span class="ital">artificial intelligence; AI</span>)</span></dt>
+        <dd>Računalniški programi za posnemanje človeške inteligence, kot so sklepanje, učenje, reševanje problemov in sprejemanje odločitev.</dd>
+
+        <dt>Umetniški slog <span class="oklepaj">(ang. <span class="ital">art style</span>)</span></dt>
+        <dd>The art style of a game refers to the overall look and feel of the game's visual elements. Art styles can range from realistic to stylized, and can have a big impact on the tone and atmosphere of the game.</dd>
+        
+        <dt>Upodabljanje <span class="oklepaj">(ang. <span class="ital">rendering</span>)</span></dt>
+        <dd>Ustvarjanje 2D slike pogleda kamere na zaslonu naprave iz scene, ki je lahko tudi tridimenzionalna.</dd>
+
+        <dt>Uporabniška izkušnja <span class="oklepaj">(ang. <span class="ital">user experience; UX</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Uporabniški vmesnik <span class="oklepaj">(ang. <span class="ital">user interface; UI</span>)</span></dt>
+        <dd>The user interface, or UI, is the way that the player interacts with the game. It includes elements such as menus, buttons, and in-game displays.</dd>
+
+        <dt>Upravitelj paketov <span class="oklepaj">(ang. <span class="ital">package manager</span>)</span></dt>
+        <dd>Upravitelj paketov je zbirka programskih orodij, ki omogoča pregled nad paketi, ki so na voljo za namestitev ali pa so že nameščeni, in avtomatizira proces prenašanja, nameščanja, nadgrajevanja in odstranjevanja paketov iz trenutnega projekta.</dd>
+
+        <dt>Uravnovešenost igre <span class="oklepaj">(ang. <span class="ital">game balance</span>)</span></dt>
+        <dd>Game balance refers to the overall difficulty and fairness of a game. A well-balanced game is challenging but fair, and allows the player to make progress through skill and strategy.</dd>
+        
+        <dt>Usmerjena svetloba <span class="oklepaj">(ang. <span class="ital">directional light</span>)</span></dt>
+        <dd>Vir svetlobe, ki ima določeno smer in se zdi, da prihaja iz neskončno oddaljenega vira. Usmerjena svetloba osvetljuje vse predmete na sceni, ne glede na njeno pozicijo v sceni.</dd>
+
+        <dt>UX <span class="oklepaj">(ang. <span class="ital">user experience</span>)</span></dt>
+        <dd>glej "Uporabniška izkušnja".</dd>
+
+        <dt  id="V">VR <span class="oklepaj">(ang. <span class="ital">virtual reality</span>)</span></dt>
+        <dd>glej "Navidezna resničnost".</dd>
+
+        <dt>Vtičnik <span class="oklepaj">(ang. <span class="ital">plug-in</span>)</span></dt>
+        <dd>.</dd>
+
+        <dt>Vuforia</dt>
+        <dd>.</dd>
+
+        <dt  id="Z">Zemljevid/ mapa <span class="oklepaj">(ang. <span class="ital">map</span>)</span></dt>
+        <dd>Po navadi gre za 2D sliko, ki se "napne" čez 3D model (mrežo?) objekta in mu doda barvo in podrobnosti.</dd>
+    </dl>
+    
+    </section>
+
+
+<section class="footer">
+    <div class="row-foot">
+        <div class="footer-col1">
+            <h3>KONTAKT</h3>
+            <p>
+            <i class="fa fa-envelope"></i>&emsp;gaja.zumer@gmail.com<br><br>
+            <i class="fa fa-linkedin"></i>&emsp;www.linkedin.com/in/gaja-zumer
+            </p>
+            
+        </div>
+        <div class="footer-col2">
+          
+        </div>
+       
+        <div class="footer-col3">
+           
+            <img src="../slike/vr_pasica1.png">
+        </div>
+    </div>
+  
+</section>
+
+<!---footer1-->
+<section class="footer1">
+    <p>Narejeno z  &nbsp;<i class="fa fa-heart-o"></i>&emsp;|&emsp;Gaja Žumer</p>
+</section>
+
+
+</body>
+</html>

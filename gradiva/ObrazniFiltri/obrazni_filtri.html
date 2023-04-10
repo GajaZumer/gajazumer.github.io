@@ -1,0 +1,207 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaja Žumer</title>
+    <link rel="stylesheet" href="../delavnica.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="arrow-btn">
+        <a href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
+    </div>
+
+
+    <section class="domov-header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../../index.html">O MENI</a></li>
+                    <li><a href="../../gradivo.html">GRADIVO</a></li>
+                </ul>
+            </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section>
+
+
+    <section class="delavnica">
+
+        <h1>Navodila za izdelavo aplikacije za obogateno resničnost z obraznimi filtri</h1>
+        <p>V tem projektu boste izdelali aplikacijo za obogateno resničnost, kjer se na obraz uporabnika izrišejo simulirani objekti (brki, ušesa, samorogov rok, očala, ...).</p><br>
+        
+        <video width="640" height="480" autoplay loop>
+            <source src="Slike/filtri.mp4" type="video/mp4">
+        </video><br><br> 
+
+        <p>Datoteke, ki ti bodo pomagale pri izdelavi aplikacije, lahko preneseš s klikom na spodnji gumb.</p><br><br>
+        <div style="text-align: center;">
+        <a href="../ObrazniFiltri/ObrazniFiltri/Gradivo.zip" download>
+                <img src="../../slike/download-icon.png" style="width:5%">
+        </a></div><br>
+
+        <h2>Priprava projekta</h2>
+        <p>Najprej ustvari nov Unity projekt.<br>
+            Prenesi gradivo s pripravljenimi datotekami in uvozi datoteko formata <b>.unitypackage</b> (<b>Assets > Import Package > Custom Package</b>).</p><br><br>
+            <img src="Slike/priprava_projekta0.PNG" style="width:50%"><br><br>
+
+        <p>Preden pričnemo z uvažanjem 3D modelov in 2D slik, ki bodo del našega obraznega filtra, moramo uvoziti določene pakete,
+           ki bodo skrbeli za prepoznavo in sledenje obraza.<br>
+           
+           V zavihku <b>Window > Package Manager</b> poišči pakete, ki so del Unity (<b>Packages: Unity Registry</b>) ter s klikom na gumb <b>Install</b> naloži paketa:<br>
+            - <b>Multiplayer HLAPI</b>,<br>
+            - <b>XR Plugin Management</b>.</p><br><br>
+
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/priprava_projekta1.PNG" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Slike/priprava_projekta2.PNG" style="width:100%">
+                </div>
+            </div> <br><br>
+            
+            
+            
+        
+        <p>Namig: pri iskanju paketov si pomagaj z vnosnim poljem (lupa) v desnem zgornjem kotu.</p>
+        <p>Preveri, da si uspešno naložil omenjena paketa, v zavihku <b>Packages:In Project</b>. Paketa se morata nahajati na seznamu ostalih paketov, ki so že del projekta.</p><br>
+        <img src="Slike/priprava_projekta3.PNG" style="width:50%"> <br><br>   
+        <p>V meniju <b>Assets > Import Package > Custom Package</b> izberi ARCore Unity paket (<b>arcore-unity-sdk-1.25.0.unitypackage</b>), ki se nahaja v mapi z gradivom, ki si jo predhodno prenesel na svoj računalnik.
+            Obkljukani naj bodo vsi elementi razen:<br>
+            - <b>Google.IOSResolver_v1.2.162.dll</b>,<br>
+            - <b>Google.IOSResolver_v1.2.162.dll.mdb</b>,<br>
+            - <b>ARCoreiOSDependencies.template</b>.<br><br>
+            Paket uvozi s klikom na gumb <b>Import</b>.</p><br><br>
+
+            <div class="row">
+                <div class="column">
+                    <img src="Slike/priprava_projekta4.PNG" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="Slike/priprava_projekta5.PNG" style="width:100%">
+                </div>
+            </div> <br><br>
+            
+        
+        <p>Če želimo, da Unity dejansko uporabi naložene pakete med poganjanjem igre, moramo v zavihku <b>Edit > Project Settings > Google ARCore</b> obkljukati <b>ARCore Required</b>.</p><br><br>
+        <img src="Slike/priprava_projekta8.PNG" style="width:50%"><br><br>
+        <p>Nekateri Unity projekti vsebujejo več scen, med katerimi so nekatere namenjene prototipiranju in niso del končne igre. Zato moramo v <b>File > Build Settings</b> določiti, katere scene so del končne igre in katere ne.
+            V našem primeru bomo imeli samo eno sceno, ki jo potrdimo s klikom na <b>Add Open Scenes</b>.<br></p><br>
+            <img src="Slike/priprava_projekta16.PNG" style="width:50%"><br><br>
+        <p>Aplikacija je kompatibilna z Android napravami, zato moramo v <b>File > Build Settings</b> zamenjati platformo iz PC v Android. Spremembo platforme potrdiš s klikom na gumb <b>Switch Platform</b>. Potrebno je spremeniti tudi verzijo Androida.
+        Verzijo Androida lahko spremenimo v zavihku <b>File > Build Settings > Player Settings > Player > Other Settings > Identification > Minimum API Level</b>. Verzija Androida mora biti vsaj 24 (oziroma Android 7.0).</p><br><br>
+
+        <img src="Slike/priprava_projekta17.PNG" style="width:50%"><br><br>
+
+        <p>Odstraniti je potrebno tudi API Vulkan, kar storimo v razdelku <b>Other Settings > Rendering</b>. Komponento Vulkan označimo in jo izbrišemo s klikom na gumb <b>-</b>.</p><br><br>
+        <img src="Slike/priprava_projekta18.PNG" style="width:50%"><br><br>
+        <p>Nato v oknu <b>Project</b> v mapi <b>Assets > GoogleARCore > Prefabs</b> klikni na <b>AR Core Device</b> in objekt nesi v okno <b>Hierarhija</b>.</p><br>
+        <p>Iz hierarhije izbriši objekt <b>Main Camera</b>.</p>
+        <p>Nato z desnim klikom v okno <b>Hierarhija</b> ustvari prezen igralni objekt (<b>Empty GameObject</b>) in ga preimenuj v <b>Upravitelj</b>. Nanj dodaj skripto <b>FaceMask.cs</b>, ki se nahaja v mapi <b>Assets > Skripte</b> v oknu <b>Project</b>.</p><br><br>
+
+        <img src="Slike/priprava_projekta9.PNG" style="width:50%"><br><br>
+
+        <p>V mapi <b>Assets > Seja</b> ustvari objekt <b>SessionConfig</b> ter v oknu <b>Inspector</b> spremeni nastavitve kot je prikazano na spodnji sliki.</p><br><br>
+        <div class="row">
+            <div class="column">
+                <img src="Slike/priprava_projekta10.PNG" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="Slike/priprava_projekta11.PNG" style="width:59%">
+            </div>
+        </div> <br><br>
+        
+        <p>Pravkar ustvarjen objekt <b>ARCoreSessionConfig</b> uporabi na objektu <b>ARCore Device</b> kot spremenljivko <b>Session Config</b>. Spremeni tudi smer kamere iz zadnje v sprednjo kamero (<b>Front Facing</b>).</p><br><br>
+        <img src="Slike/priprava_projekta12.PNG" style="width:30%"><br><br>
+        <p>V oknu <b>Hierarhija</b> ustvari prazen igralni objekt (<b>Empty GameObject</b>) ter ga preimenuj v <b>Maska</b>. Ustvari nov prazen igralni objekt, ki naj bo otrok objekta <b>Maska</b> in ga poimenuj <b>Occluder</b>. Dodaj mu naslednje komponente:<br>
+        - <b>Mesh FIlter</b>,<br>
+        - <b>AR Core Augmented Face Mesh Filter</b> (s kljukico potrdi <b>Auto Bind</b>),<br>
+        - <b>Mesh Renderer</b>,<br>
+        - <b>Occluder</b> (nahaja se v mapi <b>Assets > Materiali</b>).</p><br>
+        <img src="Slike/priprava_projekta13.PNG" style="width:30%"><br><br>
+        <p>Objekt <b>Maska</b> nato povleči v spremenljivko <b>Face Mask</b> objekta <b>Upravitelj</b>.</p><br><br>
+        <img src="Slike/priprava_projekta14.PNG" style="width:30%"><br><br>
+        <p>Čisto na koncu moramo v sceno dodati <b>canonical_face_mesh.fbx</b>, ki se nahaja v mapi <b>Assets > GoogleARCore > Examples > AugmentedFaces > Models</b>.</p><br><br>
+        <img src="Slike/priprava_projekta15.PNG" style="width:60%"><br><br>
+        <p>Maska nam bo v naslednjih korakih služila kot referenca za postavitev 3D in 2D objektov. Ti morajo biti otroci objekta <b>Occluder</b>.</p><br><br>
+
+        <h2>Implementacija 3D objektov</h2>
+
+        <p>Filter lahko sestavljajo 3D modeli (npr. očala, pokrivala, ...). Nekaj 3D modelov najdeš v mapi <b>Assets > 3D Modeli</b>, lahko pa poiščeš svoje na spletu. Nekaj platform, ki ponujajo brezplačne 3D modele:<br>
+            - Unity Asset Store,<br>
+            - TurboSquid,<br>
+            - CGTrader,<br>
+            - SketchFab.<br>
+        </p><br><br>
+
+        <p>Željen 3D model mora biti otrok objekta <b>Occluder</b>.</p><br><br>
+
+        <img src="Slike/implementacija_3d1.PNG" style="width:70%"><br><br>
+        
+        <p>3D modelom prilagodi pozicijo, rotacijo in velikost ter po želji spremeni tudi material.</p><br><br>
+
+        <img src="Slike/implementacija_3d2.PNG" style="width:70%"><br><br>
+
+        <h2>Implementacija 2D slik</h2>
+
+        <p>Filter lahko sestavljajo tudi 2D objekti (rečemo jim tudi sprite-i). Primer 2D objekta (slika formata .png) najdeš v mapi <b>Assets > Sprite</b>. Da je .png slika lahko del scene, jo moraš najprej pretvoriti v sprite.
+            V oknu <b>Inspector</b> spremeni tip teksture v Sprite in izbiro potrdi s klikom na gumb <b>Apply</b>.</p><br><br>
+        
+            <img src="Slike/implementacija2d1.PNG" style="width:30%"><br><br>
+
+        <p>Tako kot 3D model, mora biti tudi sprite otrok objekta <b>Occluder</b>.<br>
+            Prilagodi pozicijo, rotacijo in velikost, da se bo sprite prilegal na masko (<b>canonical_face_mesh</b>).<br><br>
+        </p>
+        <img src="Slike/implementacija2d2.PNG" style="width:70%"><br><br>
+        <p>Namig: Pri izbiri slik moraš biti pozoren, da imajo transparentno ozadje. Pri tem si lahko pomagaš tudi z brezplačnimi online orodji.</p><br><br>
+
+        <h2>Izgradnja Android aplikacije</h2>
+
+        <p>Ko je projekt pripravljen za testiranje na telefonu, moramo projekt najprej zgraditi in ga pretvoriti v <b>.apk</b> format. To naredimo v meniju <b>File > Build Settings</b> in kliknemo na gumb <b>Build</b>.
+            Nato izberemo mapo, v katero želimo shraniti zgrajeno Android aplikacijo.<br></p><br>
+            <img src="Slike/izgradnja1.PNG" style="width:50%"><br><br>
+        <p>Android aplikacijo nato prek USB kabla prenesemo na telefon in jo zaženemo.</p><br><br>
+
+        <!--<h2>Dodatne vsebine</h2>-->
+
+    </section>
+
+
+
+<section class="footer">
+    <div class="row-foot">
+        <div class="footer-col1">
+            <h3>KONTAKT</h3>
+            <p>
+            <i class="fa fa-envelope"></i>&emsp;gaja.zumer@gmail.com<br><br>
+            <i class="fa fa-linkedin"></i>&emsp;www.linkedin.com/in/gaja-zumer
+            
+            
+        </div>
+        <div class="footer-col2">
+            
+            
+        </div>
+        <div class="footer-col3">
+           
+            <img src="../../slike/vr_pasica1.png">
+        </div>
+    </div>
+   
+</section>
+
+<!---footer1-->
+<section class="footer1">
+    <p>Narejeno z &nbsp;<i class="fa fa-heart-o"></i> &emsp;|&emsp;Gaja Žumer</p>
+</section>
+
+
+
+</body>
+</html>

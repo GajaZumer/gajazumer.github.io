@@ -1,0 +1,24 @@
+Koliko različnih animator controllerjev je implementiranih?
+1
+2
+3
+___________________________________________________
+
+
+
+skrinja je starševski objekt objekta Zlatnik
+Zlatnik je starševski objekt objekta Skrinja
+____________________________________________________
+Želim, da se 3D objekt, ki se nahaja v hierarhiji, vendar ni viden v Sceni, pokaže tudi v Sceni. Kateri izraz bomo uporabili?
+
+Initialize
+set.active(true)
+set.active(false)
+_____________________________________________________
+
+Kateri parameter nastavljamo, če želimo doseči kovinski lesk našega materiala?
+
+Metalic
+Smoothness
+Emission
+

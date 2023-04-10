@@ -1,0 +1,136 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaja Žumer</title>
+    <link rel="stylesheet" href="../delavnica.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="arrow-btn">
+        <a href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
+    </div>
+
+
+    <section class="domov-header">
+    <p>SPLETNA STRAN JE V DELU</p>
+        <nav>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../../index.html">O MENI</a></li>  
+                    <li><a href="../../gradivo.html">GRADIVO</a></li>
+                </ul>
+            </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section>
+
+
+    <section class="delavnica">
+
+        <h1>Navodila za izdelavo AR aplikacije Skrinje</h1>
+        <p>V tem projektu boste izdelali aplikacijo za obogateno resničnost, kjer igralec najprej s klikanjem na gumba (Levo, Desno) izbere svoj lik ter svojo izbiro potrdi s klikom na tretji gumb.
+            Pri tem se naloži nova scena, kjer se izbrani lik nahaja na sredini ploščadi, v enem izmed kotov pa se nahaja skrinja z zlatnikom. S klikanjem na štiri gumbe (Naprej, Nazaj, Levo, Desno) igralec premika svoj lik.
+            Ko lik pride do skrinje, igralec s klikom na gumb "Udari" sproži animacijo, pri čemer lik boksne proti skrinji. Če skrinjo zadene, se ta odpre in igralec si prisluži en zlatnik. Ravnokar odprta skrinja izgine in se pojavi nova.
+            Cilj igre je zbrati čim več zlatnikov v danem času.
+        </p>
+        <p>Datoteke, ki ti bodo pomagale pri izdelavi aplikacije, lahko preneseš s klikom na spodnji gumb.</p>
+        <h2>Postavitev scene</h2>
+        <p>Igra je sestavljena iz dveh scen (Scena1, Scena2). V Scena1 bo igralec izbral svoj lik in potrdil svojo izbiro, Scena2 pa bo vsebovala vse ostale elemente in logiko igre.</p>
+        <p>Scene so shranjene v mapi ..... Novo sceno narediš s klikom na gumb....</p>
+        <p>V Scena1 postavi 3D objekte kot je prikazano na spodnji sliki ter objektom po želji spremeni material. Nekaterih modelov ni v mapi s predpripravljenimi gradivi im jih boš moral ustvariti sam.</p>
+        <p>Scena1 je sestavljena iz naslednjih 3D objektov:
+            - Tla,<br>
+            - lik1,<br>
+            - lik2,<br>
+            - lik3.
+        </p>
+        <p>V Scena2 postavi 3D objekte kot je prikazano na spodnji sliki ter objektom po želji spremeni material. Nekaterih modelov ni v mapi s predpripravljenimi gradivi im jih boš moral ustvariti sam.<p><br>
+
+        <p>Scena2 je sestavljena iz naslednjih 3D objektov:
+            - Tla,<br>
+            - Skrinja 1,<br>
+            - Skrinja 2,<br>
+            - Skrinja 3,<br>
+            - Skrinja 4,<br>
+            - Zlatnik 1,<br>
+            - Zlatnik 2,<br>
+            - Zlatnik 3,<br>
+            - Zlatnik 4,<br>
+            - lik 1,<br>
+            - lik 2,<br>
+            - lik 3.<br>
+
+        3D modele skrinj in likov najdeš v mapi z gradivi.
+        Pazi, da bodo liki, ki si jih postavil v Scena1, enaki likom, ki si jih postavil v Scena2.    
+        V zavihku "Project" ustvari novo mapo z imenom "3D modeli" in vanjo prenesi vse datoteke s 3D modeli skrinj in liki ter mapo "Materiali", v katero boš shranjeval vse svoje materiale.
+        Skrinje in like za boljšo preglednost 3d objektov v hierarhiji združi v prazen GameObject z imenom Skrinje in Igralec. 
+        Tla naj bodo starševski objekt objekta Skrinje in Igralec.  
+        Naredite tudi štiri zlatnike, ki naj se skrivajo v skrinjah (naj bo posamezen Zlatnik otrok objekta Skrinja).
+        V prej ustvarjeni mapi Materiali kreirajte material za tla in zlatnik ter ju uporabite na 3D objektih tal in zlatnikov v sceni.
+
+        Namig1: tla naj bodo v obliki kvadra, kovanec pa v obliki valja. Obe obliki lahko najdeš v zavihku 3D Object -> Cube/Cylinder
+
+        Namig2: naj se Tla nahajajo v koordinatnem izhodišču (x, y, z) = (0, 0, 0).
+           
+        </p>
+        <h2>Implementacija uporabniškega vmesnika</h2>
+        <p>Scena1 ima tri gumbe. Z dvema preklapljaš med možnimi liki, s tretjim pa svojo izbiro potrdiš in začneš igro.</p>
+        <p>Scena2 ima pet gumbov. Štirje so namenjeni premikanju lika levo, desno, naprej in nazaj, peti pa sproži udarec lika.</p>
+        <p>Implementiraj 4 gumbe za premik nazaj, levo in desno ter en gumb za udarec. Gumbe v sceno postaviš tako, da v hierarhijo z desnim klikom na miško izberemo Canvas -> UI -> Button. Prilagodi lego, velikost in spremeni napise na gumbih.
+        Vse omenjene, in še več, nastavitve najdete v zavihku Inspector vsakega posameznega gumba.</p>
+
+        <h2>Implementacija animacij</h2>
+        <p>Aplikacija potrebuje tri različne animator controllerje. Animiran bo lik v prvi sceni pri izbiranju željenega lika, odpiranje in zapiranje skrinje ter glavni lik, ki se bo sprehajal med skrinjami ter jih boksal.
+        Naredi animator controller za igralca kot je prikazano na spodnji shemi. Kontroler nato pripni na posameznega igralca.</p>
+        <h2>Implementacija logike</h2>
+        <p>dodaj trkalnike (Sphere Collider ali Capsule Collider) na vse desne roke (root…hand_r) igralcev. Ne pozabi dodati tudi tag-a “igralec”. Trkalnike (Box Collider) dodaj tudi na vse skrinje. Trkalnik mora služiti kot trigger (Is Trigger).
+        Na skrinji morajo biti tudi komponente Rigidbody (odkljukaj Gravity, obkljukaj IsKinematic) in skripta SkrinjaCollide.
+
+        Dopolnite skripto IgralecPremikanje tako, da bo igralec hodil v vse smeri in se obračal v smeri gibanja.
+        Gumbe za hojo veži na skripto IgralecPremikanje prek komponente Event Trigger.
+        Gumb za udarec veži na skripto Udari (ki naj bo na objektu Igralec) v komponenti OnClick.
+        Scena 2: Skripta Meni naj bo komponenta Canvasa, ki ga lahko preimenujete v Meni.</p>
+        
+        <h2>Implementacija obogatene resničnosti</h2>
+
+    </section>
+
+
+
+
+<!---footer-->
+<section class="footer">
+    <div class="row-foot">
+        <div class="footer-col1">
+            <h3>KONTAKT</h3>
+            <p>
+            <i class="fa fa-envelope"></i>&emsp;gaja.zumer@gmail.com<br><br>
+            <i class="fa fa-linkedin"></i>&emsp;www.linkedin.com/in/gaja-zumer
+        </div>
+        <div class="footer-col2">
+            
+           
+        </div>
+        <div class="footer-col3">
+            
+            <img src="../../slike/vr_pasica1.png">
+        </div>
+    </div>
+   
+</section>
+
+<!---footer1-->
+<section class="footer1">
+    <p>Narejeno z &nbsp;<i class="fa fa-heart-o"></i> &emsp;|&emsp;Gaja Žumer</p>
+</section>
+
+
+
+</body>
+</html>
